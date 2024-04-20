@@ -10,10 +10,10 @@ const Banner = ({ data, libraryAction, inLibrary, category }) => {
   const dispatch = useDispatch();
   const { player, user } = useSelector((state) => state);
 
-//   console.log(data)
+  console.log(category)
 // console.log(data?.artist)
   //   console.log(data?.type === "playlist")
-  console.log(player)
+
 
   return (
     <div className="banner">
@@ -28,7 +28,7 @@ const Banner = ({ data, libraryAction, inLibrary, category }) => {
 
         <div className="content">
           <h5>{data?.type ? data?.type : category}</h5>
-          <h1>{data?.type ? data?.name : data?.category}</h1>
+          <h1>{data?.type ? data?.name : (data?.category && data?.title ? data?.title : data?.category)}</h1>
          <p>{data?.type === "playlist"
             ? data?.short
             : "Unknown"
@@ -86,7 +86,7 @@ const Banner = ({ data, libraryAction, inLibrary, category }) => {
       </div>
 
       <div className="actions">
-        {player?.data?.type === "audio" &&
+        {
         player?.data?.title === data?.title &&
         player?.status ? (
           <button
@@ -109,7 +109,7 @@ const Banner = ({ data, libraryAction, inLibrary, category }) => {
                 ) {
                   dispatch(setStatus(true));
                 } else {
-                  dispatch(getTrack({ type: "album", id: data?.category }));
+                  dispatch(getTrack({ type: category.toLowerCase() === "track" ? "track" : "album", id: category.toLowerCase() === "track" ? data?.title : data?.category}));
                 }
               } else {
                 dispatch(setAuth({ login: true }));

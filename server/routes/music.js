@@ -625,22 +625,22 @@ router.get("/get-playlist", CheckLogged, (req, res) => {
 
 router.get("/get-audio-tracks", CheckLogged, async (req, res) => {
   const { userId, type, id, offset = 0 } = req.query;
-  
+
   try {
     let response;
-    
+
     if (type === "album") {
       // Make request to your Node.js server to fetch album data
       const { data } = await axios.get(`http://localhost:5000/api/data`);
-    
+
       if (data) {
         // Find the album corresponding to the specified ID
         const album = data.data.find(item => item.category === id);
-    
+
         if (album) {
           // Get the first song of the album
           const firstSong = album.songs[0];
-    
+
           if (firstSong) {
             // Update recent activity and history here if needed
             response = {
@@ -668,59 +668,50 @@ router.get("/get-audio-tracks", CheckLogged, async (req, res) => {
           message: "Something went wrong while fetching data",
         });
       }
-    }
-     else if (type === "track") {
-      // Handle track logic here
-    } else if (type === "playlist") {
-      let response;
-    
-      try {
-        // Call the method to get user playlist tracks
-        response = await music.getUserPlaylistTracks(
-          userId,
-          parseInt(offset),
-          `${id}_playlist`,
-          1
-        );
-    
-        // Update recent activity with the name of the first artist from the playlist tracks
-        await music.recentActivity(
-          userId,
-          response?.data?.tracks?.[0]?.artists?.[0]?.name
-        );
-    
-        // Add the first track from the playlist to the user's history
-        await music.addToHistory(userId, response?.data?.tracks?.[0]);
-      } catch (err) {
-        // Handle any errors that occur during the process
-        return res.status(500).json({
-          status: 500,
-          message: err,
+    } else if (type === "track") {
+      // Make request to your Node.js server to fetch the track based on the provided ID (song title)
+      const { data } = await axios.get(`http://localhost:5000/api/data`);
+
+      if (data) {
+        // Find the track corresponding to the provided ID
+        let track;
+        data.data.forEach(category => {
+          const foundTrack = category.songs.find(song => song.title === id);
+          if (foundTrack) {
+            track = foundTrack;
+          }
         });
-      } finally {
-        // If there's a response, send a success message along with the data
-        if (response) {
-          return res.status(200).json({
-            status: 200,
-            message: "Success",
-            data: {
-              total: response?.data?.total,
-              offset: parseInt(offset),
-              type: "playlist",
-              id,
-              track: response?.data?.tracks?.[0],
-            },
+
+        if (track) {
+          // Update recent activity and history here if needed
+          response = {
+            total: 1,
+            offset: 0, // Offset is always 0 for single tracks
+            type,
+            id,
+            track,
+          };
+        } else {
+          return res.status(404).json({
+            status: 404,
+            message: "Track not found",
           });
         }
+      } else {
+        return res.status(500).json({
+          status: 500,
+          message: "Something went wrong while fetching data",
+        });
       }
-    }
-     else {
+    } else if (type === "playlist") {
+      // Handle playlist logic here
+    } else {
       return res.status(400).json({
         status: 400,
         message: "Invalid type",
       });
     }
-    
+
     if (response) {
       return res.status(200).json({
         status: 200,

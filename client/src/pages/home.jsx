@@ -39,14 +39,14 @@ const Home = () => {
         return (
           <React.Fragment key={category}>
             {category === "featured" ? (
-              <Row title="Featured" data={categoryData} isCarousel={true} type='music' />
+              <Row title="Featured" data={categoryData} isCarousel={true} type_='music' />
             ) : category === "recentActivity" ? (
               <Row
                 title="Based On Activity"
-                data={categoryData} isCarousel={true} type='music'
+                data={categoryData} isCarousel={true} type_='music'
               />
             ) : category === "latest" ? (
-              <Row title="Latest Tracks" data={categoryData} isCarousel={true} type='music' />
+              <Row title="Latest Tracks" data={categoryData} isCarousel={true} type_='music' />
             ) : category === "albums" ? (<Carousel title="Genres" data={musicData.data} />)
                     : (<></>)
             

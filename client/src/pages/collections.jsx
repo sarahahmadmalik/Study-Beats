@@ -246,41 +246,49 @@ const Collections = ({ isArtist }) => {
 
   return (
     <div className="container" id="collections">
-      {response?.category ? (
+      {response?.category && response?.title ? (
         <Banner
           data={response}
           inLibrary={response?.inLibrary || false}
           libraryAction={libraryAction}
-          category="Album"
+          category="track"
         />
       ) : (
-        response?.artist && (
+        response?.artist ? (
           <Banner
             data={response?.artist}
             inLibrary={response?.inLibrary || false}
-              libraryAction={libraryAction}
-              category="Artist"
+            libraryAction={libraryAction}
+            category="Artist"
           />
+        ) : (
+          response?.category && (
+            <Banner
+              data={response}
+              inLibrary={response?.inLibrary || false}
+              libraryAction={libraryAction}
+              category="album"
+            />
+          )
         )
       )}
-
+  
       {response?.songs && (
         <CollectionsComp
           data={response?.songs}
           collectionId={response?.category || response?.artist}
-          collectionType={response?.category ?  "album" : ""}
+          collectionType={response?.artist ? "artist" : "track"}
         />
       )}
-
+  
       {/* {response?.tracks?.length < response?.total && (
         <LoadMore onHandle={loadMoreTracks} />
       )} */}
-
-     
-
+  
       {library?.modal?.status && <LibraryModal formAction={LibFormAction} />}
     </div>
   );
+  
 };
 
 export default Collections;

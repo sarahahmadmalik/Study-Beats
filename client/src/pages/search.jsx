@@ -141,21 +141,21 @@ const Search = () => {
       data={response[0].data}
       isCarousel={type ? false : true}
       isRound={true}
-      type='artist'
+      type_='artist'
     />
 
     <Row
       title={"Genres"}
       data={response[2].data}
                 isCarousel={type ? false : true}
-                type='genres'
+                type_='genres'
     />
 
     <Row
       title={"Tracks"}
       data={response[1].data}
                 isCarousel={true}
-                type='track'
+                type_='track'
     />
   </>
 )}
@@ -175,7 +175,7 @@ const Search = () => {
  data={response}
  isCarousel={type ? false : true}
  isRound={true}
- type='artist'
+ type_='artist'
 />
 )}
 
@@ -184,7 +184,7 @@ const Search = () => {
               title={"Tracks"}
               data={response}
               isCarousel={type ? false : true}
-              type='artist'
+              type_='artist'
             />
           )}
 

@@ -8,7 +8,7 @@ import { getTrack, setStatus } from "../../redux/player";
 import { setAuth } from "../../redux/auth";
 import "./style.scss";
 
-const Row = ({ title, data, isCarousel, isRound, isLibrary, type }) => {
+const Row = ({ title, data, isCarousel, isRound, isLibrary, type_ }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { player, user } = useSelector((state) => state);
@@ -16,7 +16,10 @@ const Row = ({ title, data, isCarousel, isRound, isLibrary, type }) => {
     play: [],
     menu: [],
   });
-console.log("here" ,data)
+  console.log("here", data)
+
+
+
   return (
     <div data-for="Row">
       <div className="title">
@@ -53,7 +56,7 @@ console.log("here" ,data)
         {data?.map((item, key) => {
          
           const { title, category, img, audio, artist, name, type, short, id, playlistId } = item;
-
+console.log(artist)
           return (
             <div
               className="card"
@@ -76,9 +79,14 @@ console.log("here" ,data)
               </div>
 
               <div className="details">
-              <h5>
-  {type?.toLowerCase() === 'music' ? title : type?.toLowerCase() === 'artist' ? artist : name}
+<h5>
+  {
+    (type_?.toLowerCase() === 'music' ? title :
+    type_?.toLowerCase() === 'artist' ? artist : name)
+  }
 </h5>
+
+
 
 
 <p>{type === 'playlist' ? short : category}</p>
@@ -94,13 +102,15 @@ console.log("here" ,data)
                       !ref?.current?.["menu"][key]?.contains(e.target) &&
                       !ref?.current?.["play"][key]?.contains(e.target)
                     ) {
-                      if(type?.toLowerCase() === 'artist')
+                      if(type_?.toLowerCase() === 'artist')
                         navigate(`/artist/${artist}`);
-                      else if(type?.toLowerCase() === 'music') 
+                      else if(type_?.toLowerCase() === 'music') 
                         navigate(`/music/${title}`);
-                      else if (type?.toLowerCase() === 'playlist')
+                      else if (type_?.toLowerCase() === 'playlist')
                         navigate(`/playlist/${id}`)
                     }
+
+                   
                    
                     
                   }}

@@ -88,14 +88,14 @@ const Collections = ({ data, collectionId, collectionType }) => {
                         if (user) {
                           if (
                             player?.data?.id === collectionId &&
-                            player?.data?.track?.id === obj?.id
+                            player?.data?.track?.id === obj?.title
                           ) {
                             dispatch(setStatus(true));
                           } else {
                             dispatch(
                               getTrack({
                                 type: collectionType,
-                                id: collectionId,
+                                id: obj?.title,
                                 offset: key,
                               })
                             );
