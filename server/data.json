@@ -1,0 +1,322 @@
+{ 
+   "data": [
+        {
+          "category": "Binaural",
+          "img": "/img/binaural.jpg",
+          "songs": [
+            {
+              "title": "Peaceful Piano Lullaby",
+              "category": "Binaural",
+              "artist": "Unknown",
+              "img": "/img/1.jpg",
+              "audio": "/audio/binaural/1.mp3"
+            },
+            {
+              "title": "Blissful Seraphic Serenade",
+              "category": "Binaural",
+              "artist": "Unknown",
+              "img": "/img/2.jpg",
+              "audio": "/audio/binaural/2.mp3"
+            },
+            {
+              "title": "DreamLike Tranquility",
+              "category": "Binaural",
+              "artist": "Unknown",
+              "img": "/img/3.jpg",
+              "audio": "/audio/binaural/3.mp3"
+            },
+            {
+              "title": "Calm Of The Cosmos",
+              "category": "Binaural",
+              "artist": "Unknown",
+              "img": "/img/4.jpg",
+              "audio": "/audio/binaural/4.mp3"
+            },
+            {
+              "title": "Pure",
+              "category": "Binaural",
+              "artist": "Unknown",
+              "img": "/img/5.jpg",
+              "audio": "/audio/binaural/5.mp3"
+            },
+            {
+              "title": "Inner Stillness",
+              "category": "Binaural",
+              "artist": "Unknown",
+              "img": "/img/6.jpg",
+              "audio": "/audio/binaural/6.mp3"
+            },
+            {
+              "title": "Serene Tranquility",
+              "category": "Binaural",
+              "artist": "Unknown",
+              "img": "/img/7.jpg",
+              "audio": "/audio/binaural/7.mp3"
+            }
+          ]
+        },
+        {
+          "category": "Lo-Fi",
+          "img": "/img/7.jpg",
+          "songs": [
+            {
+              "title": "Sunset Vibes",
+              "category": "Lo-Fi",
+              "artist": "Unknown",
+              "img": "/img/9.jpg",
+              "audio": "/audio/lo-fi/7.mp3"
+            },
+            {
+              "title": "Once In Paris",
+              "category": "Lo-Fi",
+              "artist": "Unknown",
+              "img": "/img/15.jpg",
+              "audio": "/audio/lo-fi/8.mp3"
+            },
+            {
+              "title": "Lo-Fi Study",
+              "category": "Lo-Fi",
+              "artist": "Unknown",
+              "img": "/img/26.jpg",
+              "audio": "/audio/lo-fi/9.mp3"
+            },
+            {
+              "title": "Spirit Blossom",
+              "category": "Lo-Fi",
+              "artist": "Unknown",
+              "img": "/img/11.jpg",
+              "audio": "/audio/lo-fi/10.mp3"
+            },
+            {
+              "title": "Summer Background",
+              "category": "Lo-Fi",
+              "artist": "Unknown",
+              "img": "/img/111.jpg",
+              "audio": "/audio/lo-fi/12.mp3"
+            },
+            {
+              "title": "Empty Mind",
+              "category": "Lo-Fi",
+              "artist": "Unknown",
+              "img": "/img/8.jpg",
+              "audio": "/audio/lo-fi/13.mp3"
+            },
+            {
+              "title": "Aesthetics",
+              "category": "Lo-Fi",
+              "artist": "Unknown",
+              "img": "/img/222.jpg",
+              "audio": "/audio/lo-fi/14.mp3"
+            }
+          ]
+        },
+        {
+          "category": "Nature",
+          "img": "/img/10.jpg",
+          "songs": [
+            {
+              "title": "Waves and Tears",
+              "category": "Nature",
+              "artist": "Unknown",
+              "img": "/img/19.jpg",
+              "audio": "/audio/nature/4.mp3"
+            },
+            {
+              "title": "Rilassa La Mente",
+              "category": "Nature",
+              "artist": "Unknown",
+              "img": "/img/17.jpg",
+              "audio": "/audio/nature/5.mp3"
+            },
+            {
+              "title": "Little Forest Spirits",
+              "category": "Nature",
+              "artist": "Unknown",
+              "img": "/img/10.jpg",
+              "audio": "/audio/nature/6.mp3"
+            },
+            {
+              "title": "Rain and Tears",
+              "category": "Nature",
+              "artist": "Unknown",
+              "img": "/img/5.jpg",
+              "audio": "/audio/nature/15.mp3"
+            },
+            {
+              "title": "Autumn Morning in Forest",
+              "category": "Nature",
+              "artist": "Unknown",
+              "img": "/img/77.jpg",
+              "audio": "/audio/nature/18.mp3"
+            },
+            {
+              "title": "Forest Lullaby",
+              "category": "Nature",
+              "artist": "Unknown",
+              "img": "/img/56.jpg",
+              "audio": "/audio/nature/20.mp3"
+            },
+            {
+              "title": "Field Grass",
+              "category": "Nature",
+              "artist": "Unknown",
+              "img": "/img/10.jpg",
+              "audio": "/audio/nature/21.mp3"
+            }
+          ]
+        },
+        {
+          "category": "Classical",
+          "img": "/img/3211.jpg",
+          "songs": [
+            {
+              "title": "Ambient Classical Guitar",
+              "category": "Classical",
+              "artist": "Unknown",
+              "img": "/img/15.jpg",
+              "audio": "/audio/classical/11.mp3"
+            },
+            {
+              "title": "Awaken",
+              "category": "Classical",
+              "artist": "Unknown",
+              "img": "/img/00.jpg",
+              "audio": "/audio/classical/12.mp3"
+            },
+            {
+              "title": "Piano Moment",
+              "category": "Classical",
+              "artist": "Unknown",
+              "img": "/img/89.jpg",
+              "audio": "/audio/classical/13.mp3"
+            },
+            {
+              "title": "Simple Piano Melody",
+              "category": "Classical",
+              "artist": "Unknown",
+              "img": "/img/89.jpg",
+              "audio": "/audio/classical/26.mp3"
+            },
+            {
+              "title": "Gentle Ray Of Sunshine",
+              "category": "Classical",
+              "artist": "Unknown",
+              "img": "/img/121.jpg",
+              "audio": "/audio/classical/27.mp3"
+            },
+            {
+              "title": "Study in Blue Grey",
+              "category": "Classical",
+              "artist": "Unknown",
+              "img": "/img/432.jpg",
+              "audio": "/audio/classical/28.mp3"
+            },
+            {
+              "title": "Stress Relief Piano",
+              "category": "Classical",
+              "artist": "Unknown",
+              "img": "/img/89.jpg",
+              "audio": "/audio/classical/29.mp3"
+            },
+            {
+              "title": "Spring Forest",
+              "category": "Classical",
+              "artist": "Unknown",
+              "img": "/img/56.jpg",
+              "audio": "/audio/classical/30.mp3"
+            }
+          ]
+        }
+      ],
+      "latest": [
+        {
+            "title": "Spring Forest",
+            "category": "Classical",
+            "artist": "Unknown",
+            "img": "/img/56.jpg",
+            "audio": "/audio/classical/30.mp3"
+          },
+          {
+            "title": "Autumn Morning in Forest",
+            "category": "Nature",
+            "artist": "Unknown",
+            "img": "/img/77.jpg",
+            "audio": "/audio/nature/18.mp3"
+          },
+          {
+            "title": "Aesthetics",
+            "category": "Lo-Fi",
+            "artist": "Unknown",
+            "img": "/img/222.jpg",
+            "audio": "/audio/lo-fi/14.mp3"
+          },
+          {
+            "title": "Once In Paris",
+            "category": "Lo-Fi",
+            "artist": "Unknown",
+            "img": "/img/15.jpg",
+            "audio": "/audio/lo-fi/8.mp3"
+          },
+          {
+            "title": "DreamLike Tranquility",
+            "category": "Binaural",
+            "artist": "Unknown",
+            "img": "/img/3.jpg",
+            "audio": "/audio/binaural/3.mp3"
+          }
+        
+      ],
+
+    "albums": [
+        "Binaural",
+        "Lo-Fi",
+        "Nature",
+        "Classical"
+      ],
+      "featured": [
+        {
+            "title": "Awaken",
+            "category": "Classical",
+            "artist": "Unknown",
+            "img": "/img/00.jpg",
+            "audio": "/audio/classical/12.mp3"
+          },
+          {
+            "title": "Rain and Tears",
+            "category": "Nature",
+            "artist": "Unknown",
+            "img": "/img/5.jpg",
+            "audio": "/audio/nature/15.mp3"
+          },
+          {
+            "title": "DreamLike Tranquility",
+            "category": "Binaural",
+            "artist": "Unknown",
+            "img": "/img/3.jpg",
+            "audio": "/audio/binaural/3.mp3"
+          },
+
+{
+          "title": "Gentle Ray Of Sunshine",
+          "category": "Classical",
+          "artist": "Unknown",
+          "img": "/img/121.jpg",
+          "audio": "/audio/classical/27.mp3"
+        },
+        {
+            "title": "Calm Of The Cosmos",
+            "category": "Binaural",
+            "artist": "Unknown",
+            "img": "/img/4.jpg",
+            "audio": "/audio/binaural/4.mp3"
+          },
+          {
+            "title": "Sunset Vibes",
+            "category": "Lo-Fi",
+            "artist": "Unknown",
+            "img": "/img/9.jpg",
+            "audio": "/audio/lo-fi/7.mp3"
+          }
+        
+      ]
+  }
