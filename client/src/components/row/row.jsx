@@ -56,7 +56,7 @@ const Row = ({ title, data, isCarousel, isRound, isLibrary, type_ }) => {
         {data?.map((item, key) => {
          
           const { title, category, img, audio, artist, name, type, short, id, playlistId } = item;
-console.log(artist)
+
           return (
             <div
               className="card"
@@ -80,16 +80,17 @@ console.log(artist)
 
               <div className="details">
 <h5>
-  {
-    (type_?.toLowerCase() === 'music' ? title :
-    type_?.toLowerCase() === 'artist' ? artist : name)
-  }
+ 
+                  {type === 'playlist' ? name : category}
 </h5>
 
 
 
 
-<p>{type === 'playlist' ? short : category}</p>
+<p> {
+    (type_?.toLowerCase() === 'music' ? title :
+    type_?.toLowerCase() === 'artist' ? artist : short)
+                  }</p>
 
               </div>
 
@@ -102,7 +103,9 @@ console.log(artist)
                       !ref?.current?.["menu"][key]?.contains(e.target) &&
                       !ref?.current?.["play"][key]?.contains(e.target)
                     ) {
-                      if(type_?.toLowerCase() === 'artist')
+                      if(type_?.toLowerCase() === 'artist' && category)
+                        navigate(`/album/${category}`);
+                      else if(type_?.toLowerCase() === 'artist')
                         navigate(`/artist/${artist}`);
                       else if(type_?.toLowerCase() === 'music') 
                         navigate(`/music/${title}`);
@@ -119,10 +122,11 @@ console.log(artist)
                     <button
                       data-for="libray_options"
                       onClick={() => {
+                        console.log(key)
                         dispatch(
                           setLibraryModal({
                             status: true,
-                            id: key, // Assuming key can be used as playlistId
+                            id: playlistId, // Assuming key can be used as playlistId
                           })
                         );
                       }}

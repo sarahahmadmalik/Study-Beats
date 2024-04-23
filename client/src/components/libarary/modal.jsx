@@ -64,6 +64,8 @@ const LibraryModal = ({ isLibrary, formAction }) => {
     };
   }, []);
 
+  console.log(modal?.id)
+
   return (
     <div
       className="libray_options"
@@ -82,6 +84,7 @@ const LibraryModal = ({ isLibrary, formAction }) => {
         }}
       >
         {isLibrary ? (
+          
           <>
             {modal?.id ? (
               <ul>
@@ -145,6 +148,7 @@ const LibraryModal = ({ isLibrary, formAction }) => {
                   <button
                       onClick={() => {
                         console.log("state", state.form)
+                       
                       formAction?.("create", state?.form?.create_name);
                     }}
                   >
@@ -190,6 +194,7 @@ const LibraryModal = ({ isLibrary, formAction }) => {
                       } finally {
                         if (res?.data) {
                           getPlaylists();
+                          
                         }
                       }
                     }
@@ -208,7 +213,7 @@ const LibraryModal = ({ isLibrary, formAction }) => {
                         value={obj?.playlistId}
                         checked={
                           obj?.items?.find((obj) => {
-                            return obj?.id === modal?.track;
+                            return obj?.title === modal?.track;
                           })
                             ? true
                             : false

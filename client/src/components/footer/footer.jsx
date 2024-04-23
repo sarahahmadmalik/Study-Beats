@@ -6,7 +6,7 @@ const Footer = memo(() => {
     <div className="footer">
       <div className="inner">
         <p>
-          @ Copyright {new Date().getFullYear()} Musicon. All Rights
+          @ Copyright {new Date().getFullYear()} Study Beats. All Rights
           Reserved
         </p>
       </div>

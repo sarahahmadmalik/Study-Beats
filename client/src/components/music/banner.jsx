@@ -10,7 +10,7 @@ const Banner = ({ data, libraryAction, inLibrary, category }) => {
   const dispatch = useDispatch();
   const { player, user } = useSelector((state) => state);
 
-  console.log(category)
+  console.log(data)
 // console.log(data?.artist)
   //   console.log(data?.type === "playlist")
 
@@ -28,10 +28,22 @@ const Banner = ({ data, libraryAction, inLibrary, category }) => {
 
         <div className="content">
           <h5>{data?.type ? data?.type : category}</h5>
-          <h1>{data?.type ? data?.name : (data?.category && data?.title ? data?.title : data?.category)}</h1>
+          <h1>
+  {data?.type 
+    ? data?.name 
+    : (data?.category && data?.title 
+        ? data?.title 
+        : (category.toLowerCase() === "artist" 
+            ? data?.name 
+            : data?.category
+          )
+      )
+  }
+</h1>
+
          <p>{data?.type === "playlist"
             ? data?.short
-            : "Unknown"
+            : ( category.toLowerCase() === "artist" ? "" : "Unknown")
           }</p> 
 
           <ul>

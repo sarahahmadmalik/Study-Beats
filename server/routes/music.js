@@ -470,18 +470,28 @@ router.get("/album-tracks-more", async (req, res) => {
 
 router.get("/artist", async (req, res) => {
   const { id } = req.query;
+  const decodedId = decodeURIComponent(id);
 
   try {
-    let artist = await axios.get(`http://localhost:5000/api/data/artist?id=${id}`);
-    let tracks = await axios.get(`http://localhost:5000/api/data/top-tracks?id=${id}`);
-    let related = await axios.get(`http://localhost:5000/api/data/artist-albums?id=${id}`);
+    let data = await axios.get(`http://localhost:5000/api/data`);
+    // console.log(console.log(decodedId.trim()));
+ 
+    // Filter albums based on the artist name
+    let relatedAlbums = data.data.data.filter(item => item.songs.some(song => song.artist === decodedId.trim()));
+
+
+
+    if (relatedAlbums.length === 0) {
+      return res.status(404).json({
+        status: 404,
+        message: "Artist not found in any albums",
+      });
+    }
 
     let response = {
-      artist: artist?.data,
-      related: related?.data?.items,
-      songs: tracks?.data?.slice(0, 10),
-      offset: 0,
-      total: tracks?.data?.length,
+      artist: { name: decodedId.trim() }, // Assuming you want to include the artist name in the response
+      albums: relatedAlbums, // Extracting only the album names
+      totalAlbums: relatedAlbums.length,
     };
 
     return res.status(200).json({
@@ -497,6 +507,7 @@ router.get("/artist", async (req, res) => {
     });
   }
 });
+
 
 router.post("/clone-collection-playlist", CheckLogged, async (req, res) => {
   const { userId, ...details } = req.body;
@@ -728,6 +739,67 @@ router.get("/get-audio-tracks", CheckLogged, async (req, res) => {
   }
 });
 
+router.put("/add-track-playlist", CheckLogged, async (req, res) => {
+  const { userId, trackName, playlistId } = req.body;
+console.log("trackName")
+  try {
+    // Fetching data from your Node.js server's API
+    const response = await axios.get('http://localhost:5000/api/data');
+
+    // Check if response data exists and find the track with the given trackName
+    const track = response.data.data.flatMap(category => category.songs).find(song => song.title === trackName);
+
+    console.log("track = ", track)
+
+    if (track) {
+      // Add the found track to the playlist
+      const addToPlaylistResponse = await music.addItemPlaylist(userId, playlistId, track);
+
+      return res.status(200).json({
+        status: 200,
+        message: "Success",
+        data: addToPlaylistResponse
+      });
+    } else {
+      return res.status(404).json({
+        status: 404,
+        message: "Track not found"
+      });
+    }
+  } catch (err) {
+    console.error("Error:", err);
+    return res.status(500).json({
+      status: 500,
+      message: "Something went wrong"
+    });
+  }
+});
+
+router.delete("/delete-playlist", CheckLogged, async (req, res) => {
+  const { userId, ...details } = req.body;
+
+  let response;
+
+  try {
+    response = await music.deletePlaylist(userId, details);
+  } catch (err) {
+    res.status(500).json({
+      status: 500,
+      message: err,
+    });
+  } finally {
+    if (response) {
+      console.log("deleted")
+      res.status(200).json({
+        status: 200,
+        message: "Success",
+        data: details,
+      });
+    }
+  }
+});
+
+
 router.get("/user-playlist", CheckLogged, async (req, res) => {
   const { userId, id } = req.query;
 
@@ -770,6 +842,53 @@ router.get("/get-songs", CheckLogged, (req, res) => {
   });
 });
 
+router.put("/edit-playlist", CheckLogged, async (req, res) => {
+  const { userId, playlistId, name } = req.body;
+
+  let response;
+
+  try {
+    response = await music.editPlaylist(userId, playlistId, name);
+  } catch (err) {
+    res.status(500).json({
+      status: 500,
+      message: err,
+    });
+  } finally {
+    if (response) {
+      res.status(200).json({
+        status: 200,
+        message: "Success",
+        data: response,
+      });
+    }
+  }
+});
+router.get("/getHistory", CheckLogged, async (req, res) => {
+  const { userId, search = "", offset = 0 } = req.query;
+
+  let response;
+  try {
+    response = await music.getHistory(userId, search, parseInt(offset), 10);
+  } catch (err) {
+    res.status(500).json({
+      status: 500,
+      message: err,
+    });
+  } finally {
+    if (response) {
+      res.status(200).json({
+        status: 200,
+        message: "Success",
+        data: {
+          list: response?.data,
+          total: response?.total,
+          offset: parseInt(offset) || 0,
+        },
+      });
+    }
+  }
+});
 router.get("/get-song", CheckLogged, (req, res) => {
   const { category, title } = req.query;
   const playlist = data[category];

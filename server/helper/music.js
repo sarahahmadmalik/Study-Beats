@@ -44,6 +44,7 @@ export default {
     });
   },
   deletePlaylist: (userId, details) => {
+   
     return new Promise(async (resolve, reject) => {
       try {
         let response = await db.collection(collections.LIBRARY).updateOne(
@@ -59,6 +60,7 @@ export default {
 
         if (response) {
           resolve(response);
+          console.log("isDeleted")
         }
       } catch (err) {
         reject(err);
@@ -268,6 +270,7 @@ export default {
 
         if (response) {
           resolve(response);
+          alert("Track Added!")
         }
       } catch (err) {
         reject(err);
@@ -726,6 +729,7 @@ export default {
     });
   },
   getHistory: (userId, search, offset, limit) => {
+    console.log("Search", search)
     return new Promise(async (resolve, reject) => {
       try {
         let total = await db
@@ -801,6 +805,7 @@ export default {
           data: response?.[0]?.item,
           total: total?.[0]?.value || 0,
         });
+
       } catch (err) {
         reject(err);
       }

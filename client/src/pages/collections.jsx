@@ -136,10 +136,13 @@ const Collections = ({ isArtist }) => {
     if (checked) {
       let res;
 
+    
+
       try {
+      
         res = await instance.put("/music/add-track-playlist", {
           playlistId,
-          trackId: library?.modal?.track,
+          trackName: library?.modal?.track,
         });
       } catch (err) {
         if (err?.response?.data?.status === 405) {
@@ -151,6 +154,7 @@ const Collections = ({ isArtist }) => {
       } finally {
         if (res?.data) {
           reloadData(search?.value);
+          alert("added to playlist")
         }
       }
     } else {
@@ -175,6 +179,7 @@ const Collections = ({ isArtist }) => {
       }
     }
   };
+
 
   useEffect(() => {
     document.title = `Musicon - ${isArtist ? "Artist" : "Album"}`;
@@ -204,7 +209,7 @@ const Collections = ({ isArtist }) => {
         } finally {
           if (res?.data) {
             setResponse(res?.data?.data);
-
+            console.log(res?.data?.data)
             setTimeout(() => {
               dispatch(setLoading(false));
             }, 1000);
@@ -230,7 +235,8 @@ const Collections = ({ isArtist }) => {
         } finally {
           if (res?.data) {
             setResponse(res?.data);
-            console.log(res?.data)
+            console.log(res?.data.songs)
+            
             setTimeout(() => {
               dispatch(setLoading(false));
             }, 1000);
@@ -243,6 +249,8 @@ const Collections = ({ isArtist }) => {
       cancelToken.cancel();
     };
   }, [location, user]);
+
+  console.log(response?.songs)
 
   return (
     <div className="container" id="collections">
@@ -273,12 +281,17 @@ const Collections = ({ isArtist }) => {
         )
       )}
   
-      {response?.songs && (
-        <CollectionsComp
-          data={response?.songs}
-          collectionId={response?.category || response?.artist}
-          collectionType={response?.artist ? "artist" : "track"}
-        />
+  {response?.songs && (
+  <CollectionsComp
+    data={response?.songs}
+    collectionId={response?.category || response?.artist}
+    collectionType={response?.artist ? "artist" : "track"}
+  />
+)}
+
+
+      {response?.artist && response.totalAlbums  &&(
+        <Row data={response?.albums} title={"From this Artist"} type_={"artist"} isCarousel={false} isLibrary={false}  />
       )}
   
       {/* {response?.tracks?.length < response?.total && (

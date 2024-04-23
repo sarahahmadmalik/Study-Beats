@@ -16,6 +16,7 @@ const Collections = ({ data, collectionId, collectionType }) => {
 
   console.log(collectionId, collectionType)
 
+
   const dispatch = useDispatch();
 
   const getTime = useCallback(
@@ -60,6 +61,8 @@ const Collections = ({ data, collectionId, collectionType }) => {
     };
   }, []);
 
+  console.log("ejeje", player?.data)
+
   return (
     <div className="collections">
       <table>
@@ -70,8 +73,8 @@ const Collections = ({ data, collectionId, collectionType }) => {
               <tr key={key}>
                 <td>
                   <span className="count grey">{key + 1}</span>
-                  {player?.data?.id === collectionId &&
-                  player?.data?.track?.id === obj?.id &&
+                  {player?.data?.category === collectionId &&
+                  player?.data?.track?.title === obj?.title &&
                   player?.status ? (
                     <button
                       className="Play"
@@ -84,11 +87,12 @@ const Collections = ({ data, collectionId, collectionType }) => {
                   ) : (
                     <button
                       className="Play"
-                      onClick={() => {
+                        onClick={() => {
+                        console.log(obj?.title)
                         if (user) {
                           if (
-                            player?.data?.id === collectionId &&
-                            player?.data?.track?.id === obj?.title
+                            player?.data?.track?.category === collectionId &&
+                            player?.data?.track?.title === obj?.title
                           ) {
                             dispatch(setStatus(true));
                           } else {
@@ -109,7 +113,7 @@ const Collections = ({ data, collectionId, collectionType }) => {
                     </button>
                   )}
                 </td>
-                {obj?.album?.images?.[0] ? (
+                {obj?.img ? (
                   <td>
                     <img src={obj?.img} alt={obj?.uri} />
                   </td>
@@ -163,7 +167,7 @@ const Collections = ({ data, collectionId, collectionType }) => {
                         onClick={() => {
                           if (user) {
                             dispatch(
-                              setLibraryModal({ status: true, track: obj?.id })
+                              setLibraryModal({ status: true, track: obj?.title })
                             );
                           } else {
                             dispatch(setAuth({ login: true }));
@@ -187,7 +191,7 @@ const Collections = ({ data, collectionId, collectionType }) => {
                       </li>
 
                       {player?.data?.id === collectionId &&
-                      player?.data?.track?.id === obj?.id &&
+                      player?.data?.track?.name === obj?.name &&
                       player?.status ? (
                         <li
                           onClick={() => {
@@ -202,7 +206,7 @@ const Collections = ({ data, collectionId, collectionType }) => {
                             if (user) {
                               if (
                                 player?.data?.id === collectionId &&
-                                player?.data?.track?.id === obj?.id
+                                player?.data?.track?.name === obj?.name
                               ) {
                                 dispatch(setStatus(true));
                               } else {

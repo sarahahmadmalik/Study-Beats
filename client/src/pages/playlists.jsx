@@ -203,7 +203,7 @@ const Playlists = () => {
       <LibraryHead
         getData={getPlaylists}
       />
-      <Row isLibrary={true} data={state?.response?.list} type={"library"} />
+      <Row isLibrary={true} data={state?.response?.list} type_={"playlist"} />
 
       {state?.response?.total > state?.response?.list?.length && (
         <LoadMore onHandle={loadMore} />
