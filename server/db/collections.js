@@ -3,4 +3,5 @@ export default {
   USER: "user",
   LIBRARY: "library",
   ACTIVITY: "activity",
+  FEEDBACK: "feedback"
 };

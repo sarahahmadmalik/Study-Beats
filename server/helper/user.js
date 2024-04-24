@@ -243,6 +243,24 @@ export default {
       }
     });
   },
+  submitFeedback: (userId, rating, message) => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        // Insert the feedback into the MongoDB collection
+        const response = await db.collection(collections.FEEDBACK).insertOne({
+          userId: new ObjectId(userId), // Assuming userId is a string representing the user's ObjectID
+          rating: rating,
+          message: message,
+          createdAt: new Date(),
+        });
+
+        resolve(response);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  },
+
   forgot_request: (details) => {
     return new Promise(async (resolve, reject) => {
       let response;

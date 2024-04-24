@@ -8,3 +8,4 @@ export { default as Account } from "./account";
 export { default as Verification } from "./verification";
 export { default as Collections } from "./collections";
 export { default as Playlist } from "./playlist";
+export {default as FeedBack} from "./feedback"

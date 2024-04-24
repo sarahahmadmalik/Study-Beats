@@ -10,7 +10,8 @@ import {
   Playlist,
   Search,
   Verification,
-  History
+  History,
+  FeedBack
 } from "./pages";
 import { Footer, Header, Loading, Menu } from "./components";
 import { Auth, Player } from "./features";
@@ -25,6 +26,7 @@ const App = () => {
   const location = useLocation();
 
   const { player, additional, auth } = useSelector((state) => state);
+  console.log(additional)
 
   useLayoutEffect(() => {
     // for theme
@@ -59,11 +61,17 @@ const App = () => {
 
             <Route path="/search" element={<Search />} />
             <Route path="/search/:type" element={<Search />} />
+            <Route
+              path="/feedback"
+              element={<FeedBack />}
+            />
 
             <Route
               path="/register/pending/:userId/:secret"
               element={<Verification isRegister />}
             />
+
+            
             <Route
               path="/forgot/pending/:userId/:secret"
               element={<Verification />}
@@ -74,6 +82,7 @@ const App = () => {
             <Route path="/library/playlists" element={<Playlists />} />
             <Route path="/library/history" element={<History />} />
             <Route path="/account" element={<Account />} />
+
           </Route>
           <Route path="*" element={<Error />} />
         </Routes>

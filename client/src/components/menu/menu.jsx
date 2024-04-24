@@ -1,5 +1,5 @@
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
-import { Disc, Expand, List, MenuBar, Mic, MusicIcon } from "../../assets";
+import { Disc, Expand, List, MenuBar, Mic, MusicIcon, Feedback } from "../../assets";
 import { useDispatch, useSelector } from "react-redux";
 import { setExpand } from "../../redux/additional";
 import { setAuth } from "../../redux/auth";
@@ -7,6 +7,7 @@ import { setUser } from "../../redux/user";
 import { useLocation, useNavigate } from "react-router-dom";
 import instance from "../../lib/axios";
 import "./style.scss";
+
 
 const Menu = forwardRef((params, ref) => {
   const { user } = useSelector((state) => state);
@@ -274,7 +275,23 @@ const Menu = forwardRef((params, ref) => {
                 Fullscreen
               </span>
             </button>
-
+            <button
+              className={
+                window.location.pathname === "/feedback" 
+               
+                  ? "active"
+                  : ""
+              }
+              onClick={() => {
+               
+                  navigate("/feedback");
+              }}
+          >
+             <span>
+             <Feedback width={"16px"} height={"16px"} color={"#27bfc7"} />
+              </span>
+            Feedback
+          </button>
             <button
               ref={(elm) => {
                 if (refs?.current) {
@@ -292,6 +309,8 @@ const Menu = forwardRef((params, ref) => {
               </span>
               Dark Mode
             </button>
+
+           
           </div>
 
           {/* <div className="rights">

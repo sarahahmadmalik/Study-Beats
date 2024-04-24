@@ -5,6 +5,7 @@ import axios from "axios";
 import data from '../data.json' assert { type: "json" };
 import music from "../helper/music.js";
 import { ObjectId } from "mongodb";
+import Form from "../helper/user.js"
 const router = Router();
 
 const CheckLogged = (req, res, next) => {
@@ -862,6 +863,17 @@ router.put("/edit-playlist", CheckLogged, async (req, res) => {
         data: response,
       });
     }
+  }
+});
+
+router.post('/submit', async (req, res) => {
+  try {
+    const { userId, rating, message } = req.body;
+    await Form.submitFeedback(userId, rating, message);
+    res.status(200).send('Feedback submitted successfully!');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Failed to submit feedback. Please try again later.');
   }
 });
 router.get("/getHistory", CheckLogged, async (req, res) => {
