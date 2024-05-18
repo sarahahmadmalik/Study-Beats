@@ -1,50 +1,37 @@
-# Music Streamer
+# Study Beats
 
-This project is a digital music platform, It's made for listening to music and making your favorite music collection. Spotify API is used to get tracks and albums, artists. Spotify API provides millions of music data. This project is made in the MERN stack.
+Study Beats is a digital music platform designed to optimize and increase user productivity through soothing and optimizing music and sounds. Unlike Spotify, Study Beats focuses exclusively on providing music and sounds that enhance concentration and productivity.
 
 ## Features
-
-- Full-Screen Mode
-- Password login & Verification Based Sign Up
-- Forgot password
-- Google Login & Sign up
-- Collections Clone & Custom Playlist Create and Edit & With Search Feature in Library
-- History
-- Search With Filter ( all, artists, albums, tracks)
-- Search box allows Spotify Search Query (Example = artist:alan walker )
-- Account Edit Option
-- On the home page user's recent activity-based recommendation
-- Link Copy Feature (Track, Album, Artist)
-- Audio (track) Controls
-- Light & Dark mode
-- Responsive Design
-- Only Users Can Play Audio (Tracks)
+- **Full-Screen Mode**
+- **Password Login & Verification Based Sign Up**
+- **Forgot Password**
+- **Google Login & Sign Up**
+- **Create and Edit Custom Playlists & Collections Clone**
+- **History**
+- **Advanced Search with Filters (All, Artists, Albums, Tracks)**
+- **Account Editing Options**
+- **User's Recent Activity-Based Recommendations on Home Page**
+- **Link Copy Feature (Track, Album, Artist)**
+- **Audio Controls (Play, Pause, Next, Previous)**
+- **Light & Dark Mode**
+- **Responsive Design**
+- **Audio Playback Restricted to Authenticated Users**
 
 ## Prerequisites
+Ensure you have installed all of the following on your development machine:
 
-- get your spotify api key from https://developer.spotify.com/documentation/web-api/tutorials/getting-started
-
-Make sure you have installed all of the following prerequisites on your development machine:
-
-- Node Js & Npm [Download and Install](https://nodejs.org/en)
-- MongoDB [Download and Install](https://www.mongodb.com/docs/manual/installation/)
-- Git [Download and Install](https://git-scm.com/downloads)
+- [Node.js & npm](https://nodejs.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [Git](https://git-scm.com/)
 
 ## Technology Used
-
-#vite #reactjs #scss #redux-toolkit
-
-#nodejs #expressjs #mongodb #jsonwebtoken authentication
-
-#javascript
-
-#api
-
-#spotify #music platform
+- **Frontend**: Vite, React.js, SCSS, Redux Toolkit
+- **Backend**: Node.js, Express.js, MongoDB, JSON Web Token (JWT) Authentication
+- **Languages**: JavaScript
 
 ## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file in server directory
+To run this project, you will need to add the following environment variables to your `.env` file in the server directory:
 
 `PORT` = `5000`
 
@@ -54,17 +41,13 @@ To run this project, you will need to add the following environment variables to
 
 `JWT_SECRET`
 
-`SPOTIFY_ID`
-
-`SPOTIFY_SECRET`
-
 `MAIL_EMAIL`
 
 `MAIL_SECRET`
 
 To run this project, you will need to add the following environment variables to your .env.local file in client directory
 
-`VITE_GOOGLE_CLIENT` #Google login api client id
+VITE_GOOGLE_CLIENT` #Google login api client id
 
 ## Run Locally
 
@@ -113,11 +96,3 @@ Start
 ```bash
   npm run dev
 ```
-
-## Demo
-
-[Live](https://musicon-nvce.onrender.com/)
-
-## 🔗 Links
-
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anson-benny-502961238/)
